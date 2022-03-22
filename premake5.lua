@@ -32,7 +32,8 @@ project "Spark"
     includedirs
     {
         "%{prj.name}",
-        "%{prj.name}/src"
+        "%{prj.name}/src",
+        "%{prj.name}/src",
     }
 
     filter "system:Windows"
@@ -89,7 +90,8 @@ project "Sparkle"
     includedirs
     {
         "Spark",
-        "Spark/src"
+        "Spark/src",
+        "Spark/lib/splog"
     }
 
     links
