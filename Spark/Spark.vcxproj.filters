@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\SparkleRel">
+      <UniqueIdentifier>{91CF6680-7D9D-5A86-6631-CBAC529E36EB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Spark.h" />
+    <ClInclude Include="src\Core.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SparkleRel\Application.h">
+      <Filter>src\SparkleRel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SparkleRel\MainEntry.h">
+      <Filter>src\SparkleRel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sppch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\SparkleRel\Application.cpp">
+      <Filter>src\SparkleRel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sppch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
