@@ -2,60 +2,87 @@
 
 #include "splogCore.h"
 
+/* Uses {+num+} to represent the num-th variable in the coming variable list
+ * TODO (not urgent) add "/+{" or "/+}" to make printing string "{0}" possible
+ * */
+
 namespace splog {
 
-	extern void configLogType(LogType type);
-	extern void configLogFormat(std::string& str);
+	extern void spConfigLogType(LogType type);
+	extern void spConfigLogFormat(std::string& str);
+
+	/* ---- Converting Possible Types to String ---- */
+	std::string spToString(std::string t)
+	{
+		// uses pass-by-value to prevent infinite recurring
+		return t;
+	}
 
 	template<typename T>
-	std::string spdToString(T& t)
+	std::string spToString(T& t)
 	{
-		std::string type = typeid(t).name();
-		if (type == "int" || type == "long int" || type == "long long int" ||
-			type == "unsigned int" || type == "unsigned long long int" ||
-			type == "float" || type == "double")
+		const size_t code = typeid(t).hash_code();
+		if (typeid(T).hash_code() == typeid(std::string).hash_code())
+		{
+			SPLOG_INFO("string input");
+			return spToString(t);
+		}
+		if (code == typeid(int).hash_code() || code == typeid(long long int).hash_code() ||
+			code == typeid(unsigned int).hash_code() || code == typeid(unsigned long long int).hash_code() ||
+			code == typeid(float).hash_code() || code == typeid(double).hash_code() || 
+			code == typeid(long double).hash_code())
 		{
 			return std::to_string(t);
+		}
+		else if (code == typeid(char).hash_code())
+		{
+			std::string res(1, t);
+			return res;
 		}
 		else
 		{
 			return "_NOT_SUPPORTED_TYPE";
 		}
 	}
+	/* --------------------------------------------- */
 
 	/* --- Dispatching --- */
 	// case 1
 	void dispatchLogEvent(LogType type, std::string str)
 	{
-		configLogType(type);
-		configLogFormat(str);
+		spConfigLogType(type);
+		spConfigLogFormat(str);
 	}
 
 	// case 2
 	template <typename T, typename... Args>
-	void dispatchLogEvent(LogType type, std::string str, const T& t, Args&... params)
+	void dispatchLogEvent(LogType type, std::string str, const T& t, const Args&... params)
 	{
-		configLogType(type);
-		dispatchLogEvent(str, 0, params...);
+		spConfigLogType(type);
+		dispatchLogEvent(str, 0, t, params...);
 	}
 
 	void dispatchLogEvent(std::string& str)
 	{
-		configLogFormat(str);
+		spConfigLogFormat(str);
 	}
 
 	template <typename T>
-	void dispatchLogEvent(std::string& str, unsigned int paramCnt, const T& t)
+	void dispatchLogEvent(std::string& str, int paramCnt, const T& t)
 	{
-		std::string varSign = "{" + spdToString(paramCnt) + "}";
+		std::string varSign = "{" + spToString(paramCnt) + "}";
 		size_t index = str.find(varSign);
 		if (index == std::string::npos)
+		{
 			dispatchLogEvent("[SYNTAX ERROR: FEWER MACHING PARAM] ORIGINAL: " + str);
+			return;
+		}
+		str.replace(index, 3, spToString(t));
 		while (true)
 		{
 			index = str.find(varSign, index + 1);
 			if (index != std::string::npos)
-				str.replace(index, 3, spdToString(t));
+				str.replace(index, 3, spToString(t));
 			else
 				break;
 		}
@@ -63,17 +90,21 @@ namespace splog {
 	}
 
 	template <typename T, typename... Args>
-	void dispatchLogEvent(std::string& str, unsigned int paramCnt, const T& t, Args&... params)
+	void dispatchLogEvent(std::string& str, int paramCnt, const T& t, const Args&... params)
 	{
-		std::string varSign = "{" + spdToString(paramCnt) + "}";
+		std::string varSign = "{" + spToString(paramCnt) + "}";
 		size_t index = str.find(varSign);
 		if (index == std::string::npos)
+		{
 			dispatchLogEvent("[SYNTAX ERROR: FEWER MACHING PARAM] ORIGINAL: " + str);
+			return;
+		}
+		str.replace(index, 3, spToString(t));
 		while (true)
 		{
 			index = str.find(varSign, index + 1);
 			if (index != std::string::npos)
-				str.replace(index, 3, spdToString(t));
+				str.replace(index, 3, spToString(t));
 			else
 				break;
 		}
