@@ -22,7 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Spark.h" />
-    <ClInclude Include="lib\splog\Platform\Windows\spWindowsConfig.h">
+    <ClInclude Include="lib\splog\Platform\Windows\splogWindowsConfig.h">
       <Filter>lib\splog\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="lib\splog\splog.h">
@@ -49,6 +49,7 @@
     <ClInclude Include="src\sppch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="lib\splog\Logger\splogLogger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\SparkleRel\Application.cpp">

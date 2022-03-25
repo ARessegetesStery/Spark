@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include <ctime>
+
 namespace splog {
 
 	enum LogType
@@ -14,6 +16,5 @@ namespace splog {
 		Error = 3,
 		Fatal = 4
 	};
-
 
 }

@@ -1,15 +1,10 @@
 #pragma once
 
-#include "splogCore.h"
-
 /* Uses {+num+} to represent the num-th variable in the coming variable list
  * TODO (not urgent) add "/+{" or "/+}" to make printing string "{0}" possible
  * */
 
 namespace splog {
-
-	extern void spConfigLogType(LogType type);
-	extern void spConfigLogFormat(std::string& str);
 
 	/* ---- Converting Possible Types to String ---- */
 	std::string spToString(std::string t)
@@ -24,7 +19,6 @@ namespace splog {
 		const size_t code = typeid(t).hash_code();
 		if (typeid(T).hash_code() == typeid(std::string).hash_code())
 		{
-			SPLOG_INFO("string input");
 			return spToString(t);
 		}
 		if (code == typeid(int).hash_code() || code == typeid(long long int).hash_code() ||
@@ -48,23 +42,16 @@ namespace splog {
 
 	/* --- Dispatching --- */
 	// case 1
-	void dispatchLogEvent(LogType type, std::string str)
+	std::string dispatchLogEvent(std::string str)
 	{
-		spConfigLogType(type);
-		spConfigLogFormat(str);
+		return str;
 	}
 
 	// case 2
 	template <typename T, typename... Args>
-	void dispatchLogEvent(LogType type, std::string str, const T& t, const Args&... params)
+	std::string dispatchLogEvent(std::string str, const T& t, const Args&... params)
 	{
-		spConfigLogType(type);
 		dispatchLogEvent(str, 0, t, params...);
-	}
-
-	void dispatchLogEvent(std::string& str)
-	{
-		spConfigLogFormat(str);
 	}
 
 	template <typename T>

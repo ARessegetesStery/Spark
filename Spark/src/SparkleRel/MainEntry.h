@@ -2,6 +2,7 @@
 
 #include "sppch.h"
 #include "lib/splog/splog.h"
+#include "lib/splog/Platform/Windows/splogWindowsConfig.h"
 
 #include "Windows.h"
 
@@ -11,12 +12,15 @@ int main()
 {
 	std::cout << "Welcome to Spark!" << std::endl;
 
-	std::string str("123");
-	SPLOG_WARNING("Hello SPLOG!, {0}, {1}, {0}", 1, str);
-	// std::cout << splog::spToString(str) << std::endl;
-	
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	// you can loop k higher to see more color choices
+	/* --- Test ground --- */
+	splog::Logger* log = splog::Logger::genLogger("Spark");
+	log->setLogFormat("[||TIME||]||CSTR|| ||NAME||: ||LMSG|| ||CEND||");
+	log->trace("Hello!");
+
+	//std::string str("123");
+	//std::cout << str.length() << std::endl;
+
+	/* ------------------- */
 
 	auto app = createApp();
 	app->tickUpdate();

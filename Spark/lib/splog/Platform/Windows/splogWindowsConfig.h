@@ -31,6 +31,12 @@ namespace splog {
 		}
 	}
 
+	void spResetLogColor()
+	{
+		HANDLE hWinConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hWinConsole, 7);
+	}
+
 }
 
 #endif

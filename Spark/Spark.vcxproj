@@ -145,8 +145,9 @@ copy /B /Y ..\bin\Release-windows-x86_64\Spark\Spark.dll ..\bin\Release-windows-
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="lib\splog\Logger\splogLogger.h" />
     <ClInclude Include="Spark.h" />
-    <ClInclude Include="lib\splog\Platform\Windows\spWindowsConfig.h" />
+    <ClInclude Include="lib\splog\Platform\Windows\splogWindowsConfig.h" />
     <ClInclude Include="lib\splog\splog.h" />
     <ClInclude Include="lib\splog\splogConfig.h" />
     <ClInclude Include="lib\splog\splogCore.h" />
