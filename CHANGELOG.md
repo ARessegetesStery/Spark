@@ -22,3 +22,7 @@
 ### [22/3/26] Logging System
 * **FIX** Split Splog declaration and implementation
 * Added logging system
+
+### [22/3/26] Logging/Event System
+* **FIX** Restruct splog files
+* Integrated basic event system

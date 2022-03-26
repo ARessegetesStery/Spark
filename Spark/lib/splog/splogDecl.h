@@ -2,6 +2,11 @@
 
 #include "splogCore.h"
 
+/* This files includes all the declarations for splog
+ * Include this in all header files potentially will use splog
+ * For the implementation, please include splog.h
+ * */
+
 namespace splog {
 
 	class Logger
@@ -66,5 +71,42 @@ namespace splog {
 	template <typename T, typename... Args>
 	void dispatchLogEvent(std::string& str, int paramCnt, const T& t, const Args&... params);
 
+	/* --- Setting up Logging types --- */
+	template <typename... Args>
+	void Logger::info(Args... params)
+	{
+		genLog(splog::LogType::Info, params...);
+	}
 
+	template <typename... Args>
+	void Logger::trace(Args... params)
+	{
+		genLog(splog::LogType::Trace, params...);
+	}
+
+	template <typename... Args>
+	void Logger::warning(Args... params)
+	{
+		genLog(splog::LogType::Warning, params...);
+	}
+
+	template <typename... Args>
+	void Logger::error(Args... params)
+	{
+		genLog(splog::LogType::Error, params...);
+	}
+
+	template <typename... Args>
+	void Logger::fatal(Args... params)
+	{
+		genLog(splog::LogType::Fatal, params...);
+	}
+	/* -------------------------------- */
+
+	template <typename... Args>
+	void Logger::genLog(LogType type, Args... params)
+	{
+		std::string strWParams = dispatchLogEvent(params...);
+		spConfigLogFormat(type, strWParams, m_fmtInfo);
+	}
 }

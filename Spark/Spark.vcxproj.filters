@@ -46,7 +46,7 @@
     <ClInclude Include="lib\splog\splogParsing.h">
       <Filter>lib\splog</Filter>
     </ClInclude>
-    <ClInclude Include="src\Basics.h">
+    <ClInclude Include="src\Core\Basics.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Log.h">
@@ -62,6 +62,10 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="lib\splog\splogDecl.h" />
+    <ClInclude Include="src\Event\ApplicationEvent.h" />
+    <ClInclude Include="src\Event\Event.h" />
+    <ClInclude Include="src\Event\KeyEvent.h" />
+    <ClInclude Include="src\Event\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Log.cpp">
