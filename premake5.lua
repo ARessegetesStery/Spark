@@ -106,8 +106,7 @@ project "Sparkle"
 
         defines
         {
-            "SP_PLATFORM_WINDOWS",
-            "SP_BUILD_DLL"
+            "SP_PLATFORM_WINDOWS"
         }
 
     filter "configurations:Debug"

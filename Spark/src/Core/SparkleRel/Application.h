@@ -2,7 +2,8 @@
 
 #include "sppch.h"
 
-#include "Core.h"
+#include "Basics.h"
+#include "Core/Log.h"
 
 namespace Spark {
 
@@ -17,5 +18,7 @@ namespace Spark {
 	private:
 		bool m_Running;
 	};
+
+	Application* createApp();
 
 }

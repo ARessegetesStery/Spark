@@ -1,8 +1,12 @@
 #pragma once
 
-#include "Core.h"
+#include "Core/SparkleRel/Application.h"
 
-#include "SparkleRel/Application.h"
+#include "Core/Log.h"
 
 // main
-#include "SparkleRel/MainEntry.h"
+#include "Core/SparkleRel/MainEntry.h"
+
+
+// lib definitions
+#include "lib/splog/splog.h"

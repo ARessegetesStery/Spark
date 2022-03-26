@@ -17,7 +17,6 @@ namespace Spark {
 	{
 		while (m_Running)
 		{
-
 		}
 	}
 }

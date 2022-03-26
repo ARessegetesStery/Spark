@@ -145,20 +145,23 @@ copy /B /Y ..\bin\Release-windows-x86_64\Spark\Spark.dll ..\bin\Release-windows-
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="lib\splog\Logger\splogLogger.h" />
+    <ClInclude Include="lib\splog\splogDecl.h" />
     <ClInclude Include="Spark.h" />
+    <ClInclude Include="lib\splog\splogLogger.h" />
     <ClInclude Include="lib\splog\Platform\Windows\splogWindowsConfig.h" />
     <ClInclude Include="lib\splog\splog.h" />
     <ClInclude Include="lib\splog\splogConfig.h" />
     <ClInclude Include="lib\splog\splogCore.h" />
     <ClInclude Include="lib\splog\splogParsing.h" />
-    <ClInclude Include="src\Core.h" />
-    <ClInclude Include="src\SparkleRel\Application.h" />
-    <ClInclude Include="src\SparkleRel\MainEntry.h" />
+    <ClInclude Include="src\Basics.h" />
+    <ClInclude Include="src\Core\Log.h" />
+    <ClInclude Include="src\Core\SparkleRel\Application.h" />
+    <ClInclude Include="src\Core\SparkleRel\MainEntry.h" />
     <ClInclude Include="src\sppch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\SparkleRel\Application.cpp" />
+    <ClCompile Include="src\Core\Log.cpp" />
+    <ClCompile Include="src\Core\SparkleRel\Application.cpp" />
     <ClCompile Include="src\sppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

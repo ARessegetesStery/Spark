@@ -10,7 +10,7 @@
 
 #endif
 
-#include "Logger/splogLogger.h"
+#include "splogLogger.h"
 
 namespace splog {
 
@@ -35,7 +35,7 @@ namespace splog {
 			tHourStr = "0" + tHourStr;
 		if (local_time->tm_min < 10)
 			tMinStr = "0" + tMinStr;
-		if (local_time->tm_hour < 10)
+		if (local_time->tm_sec < 10)
 			tSecStr = "0" + tSecStr;
 		timeStr = tHourStr + ":" + tMinStr + ":" + tSecStr;
 		ind = res.find("||TIME||");
@@ -49,7 +49,7 @@ namespace splog {
 		spConfigLogColor(type);
 		std::cout << res.substr(colorStart, colorEnd - colorStart);
 		spResetLogColor();
-		std::cout << res.substr(colorEnd);
+		std::cout << res.substr(colorEnd) << std::endl;
 	}
 
 }

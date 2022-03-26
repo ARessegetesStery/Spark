@@ -18,3 +18,7 @@
 ### [22/3/25] SPLOG Improvements
 * **FIX** Colorizing segment of line
 * **FIX** Setting up logging format
+
+### [22/3/26] Logging System
+* **FIX** Split Splog declaration and implementation
+* Added logging system

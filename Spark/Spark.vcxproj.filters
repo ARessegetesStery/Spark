@@ -7,6 +7,9 @@
     <Filter Include="lib\splog">
       <UniqueIdentifier>{50856AEB-BCEF-1E62-052E-D00771D7FCB6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib\splog\Logger">
+      <UniqueIdentifier>{1F81A193-0B7A-C0E5-34AC-A56A2004A0F1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="lib\splog\Platform">
       <UniqueIdentifier>{A4BB0BBF-909F-CC14-F9FF-C667E502B796}</UniqueIdentifier>
     </Filter>
@@ -16,12 +19,18 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\SparkleRel">
-      <UniqueIdentifier>{91CF6680-7D9D-5A86-6631-CBAC529E36EB}</UniqueIdentifier>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\SparkleRel">
+      <UniqueIdentifier>{09BD2558-751E-0366-FE8B-49186AEC3925}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Spark.h" />
+    <ClInclude Include="lib\splog\splogLogger.h">
+      <Filter>lib\splog\Logger</Filter>
+    </ClInclude>
     <ClInclude Include="lib\splog\Platform\Windows\splogWindowsConfig.h">
       <Filter>lib\splog\Platform\Windows</Filter>
     </ClInclude>
@@ -37,23 +46,29 @@
     <ClInclude Include="lib\splog\splogParsing.h">
       <Filter>lib\splog</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core.h">
+    <ClInclude Include="src\Basics.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\SparkleRel\Application.h">
-      <Filter>src\SparkleRel</Filter>
+    <ClInclude Include="src\Core\Log.h">
+      <Filter>src\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\SparkleRel\MainEntry.h">
-      <Filter>src\SparkleRel</Filter>
+    <ClInclude Include="src\Core\SparkleRel\Application.h">
+      <Filter>src\Core\SparkleRel</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\SparkleRel\MainEntry.h">
+      <Filter>src\Core\SparkleRel</Filter>
     </ClInclude>
     <ClInclude Include="src\sppch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="lib\splog\Logger\splogLogger.h" />
+    <ClInclude Include="lib\splog\splogDecl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\SparkleRel\Application.cpp">
-      <Filter>src\SparkleRel</Filter>
+    <ClCompile Include="src\Core\Log.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\SparkleRel\Application.cpp">
+      <Filter>src\Core\SparkleRel</Filter>
     </ClCompile>
     <ClCompile Include="src\sppch.cpp">
       <Filter>src</Filter>

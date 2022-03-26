@@ -1,5 +1,7 @@
 #pragma once
 
+// TODO split the declaration and the definition
+
 #include "splogCore.h"
 #include "splogConfig.h"
 #include "splogParsing.h"

@@ -2,8 +2,18 @@
 
 namespace Spark {
 
-	class SPARK_API Sparkle : public Application
+	class Sparkle : public Application
 	{
+	public:
+		Sparkle()
+		{
+
+		}
+
+		~Sparkle()
+		{
+
+		}
 		
 	};
 
