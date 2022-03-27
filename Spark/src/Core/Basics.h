@@ -14,13 +14,13 @@
 	#define SP_CORE_ASSERT(x, ...) \
 		if (!(x)) \
 		{\
-			SP_LOG_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__);\
+			SP_CORE_LOG_ERROR("Assertion failed: {0}", __VA_ARGS__);\
 			__debugbreak();\
 		}
 	#define SP_ASSERT(x, ...) \
 		if (!(x)) \
 		{\
-			SP_LOG_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__); \
+			SP_LOG_ERROR("Assertion failed: {0}", __VA_ARGS__); \
 			__debugbreak(); \
 		}
 #else

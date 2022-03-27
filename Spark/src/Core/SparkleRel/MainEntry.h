@@ -2,8 +2,6 @@
 
 #ifdef SP_PLATFORM_WINDOWS
 
-#include "Core/Log.h"
-
 extern Spark::Application* createApp();
 
 int main()
@@ -13,7 +11,6 @@ int main()
 	std::cout << "Welcome to Spark!" << std::endl;
 
 	/* --- Test ground --- */
-
 
 	SP_CORE_LOG_INFO("Hello!")
 	SP_LOG_INFO("Hello!")

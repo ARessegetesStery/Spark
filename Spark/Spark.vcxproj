@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;SP_DEBUG;SP_ASSERT_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;GLFW_INCLUDE_NONE;SP_DEBUG;SP_ASSERT_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;src;vendor\glfw\include;vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -90,6 +90,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Debug-windows-x86_64\Spark\Spark.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -102,14 +103,15 @@ copy /B /Y ..\bin\Debug-windows-x86_64\Spark\Spark.dll ..\bin\Debug-windows-x86_
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;GLFW_INCLUDE_NONE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;src;vendor\glfw\include;vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Test-windows-x86_64\Spark\Spark.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -122,8 +124,8 @@ copy /B /Y ..\bin\Test-windows-x86_64\Spark\Spark.dll ..\bin\Test-windows-x86_64
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>sppch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;SP_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SP_PLATFORM_WINDOWS;SP_BUILD_DLL;GLFW_INCLUDE_NONE;SP_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;src;vendor\glfw\include;vendor\GLAD\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -137,6 +139,7 @@ copy /B /Y ..\bin\Test-windows-x86_64\Spark\Spark.dll ..\bin\Test-windows-x86_64
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Release-windows-x86_64\Spark\Spark.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
@@ -145,30 +148,77 @@ copy /B /Y ..\bin\Release-windows-x86_64\Spark\Spark.dll ..\bin\Release-windows-
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="lib\splog\splogDecl.h" />
     <ClInclude Include="Spark.h" />
-    <ClInclude Include="lib\splog\splogLogger.h" />
     <ClInclude Include="lib\splog\Platform\Windows\splogWindowsConfig.h" />
     <ClInclude Include="lib\splog\splog.h" />
     <ClInclude Include="lib\splog\splogConfig.h" />
     <ClInclude Include="lib\splog\splogCore.h" />
+    <ClInclude Include="lib\splog\splogDecl.h" />
+    <ClInclude Include="lib\splog\splogLogger.h" />
     <ClInclude Include="lib\splog\splogParsing.h" />
     <ClInclude Include="src\Core\Basics.h" />
     <ClInclude Include="src\Core\Log.h" />
     <ClInclude Include="src\Core\SparkleRel\Application.h" />
     <ClInclude Include="src\Core\SparkleRel\MainEntry.h" />
+    <ClInclude Include="src\Core\Window.h" />
     <ClInclude Include="src\Event\ApplicationEvent.h" />
     <ClInclude Include="src\Event\Event.h" />
     <ClInclude Include="src\Event\KeyEvent.h" />
     <ClInclude Include="src\Event\MouseEvent.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\sppch.h" />
+    <ClInclude Include="vendor\GLAD\include\KHR\khrplatform.h" />
+    <ClInclude Include="vendor\GLAD\include\glad\glad.h" />
+    <ClInclude Include="vendor\glfw\deps\getopt.h" />
+    <ClInclude Include="vendor\glfw\deps\glad\gl.h" />
+    <ClInclude Include="vendor\glfw\deps\glad\gles2.h" />
+    <ClInclude Include="vendor\glfw\deps\glad\vulkan.h" />
+    <ClInclude Include="vendor\glfw\deps\linmath.h" />
+    <ClInclude Include="vendor\glfw\deps\mingw\_mingw_dxhelper.h" />
+    <ClInclude Include="vendor\glfw\deps\mingw\dinput.h" />
+    <ClInclude Include="vendor\glfw\deps\mingw\xinput.h" />
+    <ClInclude Include="vendor\glfw\deps\nuklear.h" />
+    <ClInclude Include="vendor\glfw\deps\nuklear_glfw_gl2.h" />
+    <ClInclude Include="vendor\glfw\deps\stb_image_write.h" />
+    <ClInclude Include="vendor\glfw\deps\tinycthread.h" />
+    <ClInclude Include="vendor\glfw\deps\vs2008\stdint.h" />
+    <ClInclude Include="vendor\glfw\include\GLFW\glfw3.h" />
+    <ClInclude Include="vendor\glfw\include\GLFW\glfw3native.h" />
+    <ClInclude Include="vendor\glfw\src\cocoa_joystick.h" />
+    <ClInclude Include="vendor\glfw\src\cocoa_platform.h" />
+    <ClInclude Include="vendor\glfw\src\cocoa_time.h" />
+    <ClInclude Include="vendor\glfw\src\internal.h" />
+    <ClInclude Include="vendor\glfw\src\linux_joystick.h" />
+    <ClInclude Include="vendor\glfw\src\mappings.h" />
+    <ClInclude Include="vendor\glfw\src\null_joystick.h" />
+    <ClInclude Include="vendor\glfw\src\null_platform.h" />
+    <ClInclude Include="vendor\glfw\src\platform.h" />
+    <ClInclude Include="vendor\glfw\src\posix_poll.h" />
+    <ClInclude Include="vendor\glfw\src\posix_thread.h" />
+    <ClInclude Include="vendor\glfw\src\posix_time.h" />
+    <ClInclude Include="vendor\glfw\src\win32_joystick.h" />
+    <ClInclude Include="vendor\glfw\src\win32_platform.h" />
+    <ClInclude Include="vendor\glfw\src\win32_thread.h" />
+    <ClInclude Include="vendor\glfw\src\win32_time.h" />
+    <ClInclude Include="vendor\glfw\src\wl_platform.h" />
+    <ClInclude Include="vendor\glfw\src\x11_platform.h" />
+    <ClInclude Include="vendor\glfw\src\xkb_unicode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Log.cpp" />
     <ClCompile Include="src\Core\SparkleRel\Application.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\sppch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="vendor\glfw\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\GLAD\GLAD.vcxproj">
+      <Project>{5D4A857C-4981-860D-F26D-6C10DE83020F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

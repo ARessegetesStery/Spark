@@ -3,7 +3,6 @@
 #include "sppch.h"
 
 #include "Core/Basics.h"
-#include "Core/Log.h"
 
 namespace Spark {
 

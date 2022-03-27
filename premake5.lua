@@ -8,15 +8,24 @@ workspace "Spark"
         "Test",    -- release standard, with debugging tools
         "Release"
     }
-    startproject "Sparkle"
-
+    
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+startproject "Sparkle"
+    
+IncludeDirs = { }
+
+IncludeDirs["GLFW"] = "Spark/vendor/glfw/include"
+IncludeDirs["GLAD"] = "Spark/vendor/GLAD/include"
+
+include "Spark/vendor/glfw"
+include "Spark/vendor/GLAD"
 
 project "Spark"
     location "Spark"
     kind "SharedLib"
     language "C++"
-
+    
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
@@ -34,6 +43,15 @@ project "Spark"
         "%{prj.name}",
         "%{prj.name}/src",
         "%{prj.name}/src",
+        "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.GLAD}"
+    }
+
+    links
+    {
+        "GLFW",
+        "GLAD",
+        "opengl32.lib"
     }
 
     filter "system:Windows"
@@ -44,7 +62,8 @@ project "Spark"
         defines
         {
             "SP_PLATFORM_WINDOWS",
-            "SP_BUILD_DLL"
+            "SP_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands
@@ -91,7 +110,9 @@ project "Sparkle"
     {
         "Spark",
         "Spark/src",
-        "Spark/lib/splog"
+        "Spark/lib/splog",
+        "%{IncludeDirs.GLFW}",
+        "%{IncludeDirs.GLAD}"
     }
 
     links
@@ -128,3 +149,5 @@ project "Sparkle"
         defines "SP_DIST"
         buildoptions "/MD"
         optimize "On" 
+
+project "GLFW"
