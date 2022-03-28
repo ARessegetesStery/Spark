@@ -30,3 +30,10 @@
 ### [22/03/27] SPLOG/Window System
 * **FIX** Resolve multiple definition
 * Added Window/WinWindow
+
+### [22/03/28] GLFW Callback/Window Events
+* Added GLFW/GLAD
+* Implemented the event system in GLFW Callback & WinWindow Class
+
+### [22/03/28] Layer System
+* Added Layer System and Testing Code

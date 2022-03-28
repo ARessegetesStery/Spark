@@ -42,6 +42,26 @@ namespace Spark {
 		return true;
 	}
 
+	void Application::attachLayer(Layer* lyr)
+	{
+		m_LayerStack.attachLayer(lyr);
+	}
+
+	void Application::attachOverlay(Layer* lyr)
+	{
+		m_LayerStack.attachOverlay(lyr);
+	}
+
+	void Application::detachLayer(Layer* lyr)
+	{
+		m_LayerStack.detachLayer(lyr);
+	}
+
+	void Application::detachOverlay(Layer* lyr)
+	{
+		m_LayerStack.detachOverlay(lyr);
+	}
+
 	void Application::tickUpdate()
 	{
 		
@@ -50,6 +70,10 @@ namespace Spark {
 			glClearColor(0.4f, 0.2f, 0.6f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			for (auto lyr : m_LayerStack)
+			{
+				lyr->onEvent();
+			}
 
 			m_Window->onUpdate();
 		}

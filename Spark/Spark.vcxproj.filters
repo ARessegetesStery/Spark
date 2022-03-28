@@ -233,6 +233,7 @@
       <Filter>vendor\glfw\src</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Core\Layer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Log.cpp">
@@ -245,5 +246,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Core\Layer.cpp" />
   </ItemGroup>
 </Project>

@@ -157,6 +157,7 @@ copy /B /Y ..\bin\Release-windows-x86_64\Spark\Spark.dll ..\bin\Release-windows-
     <ClInclude Include="lib\splog\splogLogger.h" />
     <ClInclude Include="lib\splog\splogParsing.h" />
     <ClInclude Include="src\Core\Basics.h" />
+    <ClInclude Include="src\Core\Layer.h" />
     <ClInclude Include="src\Core\Log.h" />
     <ClInclude Include="src\Core\SparkleRel\Application.h" />
     <ClInclude Include="src\Core\SparkleRel\MainEntry.h" />
@@ -205,6 +206,7 @@ copy /B /Y ..\bin\Release-windows-x86_64\Spark\Spark.dll ..\bin\Release-windows-
     <ClInclude Include="vendor\glfw\src\xkb_unicode.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Core\Layer.cpp" />
     <ClCompile Include="src\Core\Log.cpp" />
     <ClCompile Include="src\Core\SparkleRel\Application.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
