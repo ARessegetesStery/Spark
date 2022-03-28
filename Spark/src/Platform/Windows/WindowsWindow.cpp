@@ -5,8 +5,6 @@
 #include "Event/MouseEvent.h"
 #include "Event/ApplicationEvent.h"
 
-#include <GLAD/glad.h>
-
 namespace Spark {
 
 	static bool s_GLFWInited = false;
@@ -85,18 +83,18 @@ namespace Spark {
 				WindowInfo& info = *(WindowInfo*)glfwGetWindowUserPointer(window);
 				switch (action)
 				{
-					case GLFW_PRESS:
-					{
-						MouseButtonPressedEvent e(button);
-						info.callback(e);
-						break;
-					}
-					case GLFW_RELEASE:
-					{
-						MouseButtonReleasedEvent e(button);
-						info.callback(e);
-						break;
-					}
+				case GLFW_PRESS:
+				{
+					MouseButtonPressedEvent e(button);
+					info.callback(e);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					MouseButtonReleasedEvent e(button);
+					info.callback(e);
+					break;
+				}
 				}
 			});
 
@@ -105,24 +103,24 @@ namespace Spark {
 				WindowInfo& info = *(WindowInfo*)glfwGetWindowUserPointer(window);
 				switch (action)
 				{
-					case GLFW_PRESS:
-					{
-						KeyPressedEvent e(key, 0);
-						info.callback(e);
-						break;
-					}
-					case GLFW_RELEASE:
-					{
-						KeyReleasedEvent e(key);
-						info.callback(e);
-						break;
-					}
-					case GLFW_REPEAT:
-					{
-						KeyPressedEvent e(key, 1);
-						info.callback(e);
-						break;
-					}
+				case GLFW_PRESS:
+				{
+					KeyPressedEvent e(key, 0);
+					info.callback(e);
+					break;
+				}
+				case GLFW_RELEASE:
+				{
+					KeyReleasedEvent e(key);
+					info.callback(e);
+					break;
+				}
+				case GLFW_REPEAT:
+				{
+					KeyPressedEvent e(key, 1);
+					info.callback(e);
+					break;
+				}
 				}
 			});
 		/* --------------------------------------------*/

@@ -5,6 +5,8 @@
 #include "Core/Basics.h"
 #include "Event/Event.h"
 
+#include "GLFW/glfw3.h"
+
 namespace Spark {
 
 	struct WindowProp
@@ -14,7 +16,7 @@ namespace Spark {
 		unsigned int height;
 		unsigned int width;
 
-		WindowProp(const std::string Name = "Sparks Engine",
+		WindowProp(const std::string Name = "Spark Engine",
 			unsigned int Width = 1280, unsigned int Height = 720)
 			: name(Name), height(Height), width(Width) {  }
 	};

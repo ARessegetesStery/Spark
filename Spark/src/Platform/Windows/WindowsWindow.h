@@ -3,7 +3,7 @@
 #include "sppch.h"
 #include "Core/Window.h"
 
-#include <GLFW/glfw3.h>
+#include <GLAD/glad.h>
 
 namespace Spark {
 
